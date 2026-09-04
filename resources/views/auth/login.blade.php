@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mi Proyecto</title>
+    <title>UT del Mayab - Control Escolar</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --primary: #d97706; /* UT Gold */
+            --primary-hover: #b45309;
+            --bg-gradient: linear-gradient(135deg, #022c22 0%, #064e3b 100%); /* Dark UT Green */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
@@ -122,7 +122,7 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #10b981 100%);
             filter: blur(100px);
             z-index: -1;
             opacity: 0.3;
@@ -137,8 +137,15 @@
     <div class="decorative-circle circle-2"></div>
 
     <div class="login-container">
-        <h1>Bienvenido</h1>
-        <p class="subtitle">Ingresa tus credenciales para continuar</p>
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--primary);">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                <path d="M12 14v6"></path>
+            </svg>
+        </div>
+        <h1>UT del Mayab</h1>
+        <p class="subtitle">Sistema de Control Escolar</p>
 
         @if ($errors->any())
             <div class="error-message">

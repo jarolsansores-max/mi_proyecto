@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dashboard - Mi Proyecto</title>
+    <title>Dashboard - UT del Mayab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --primary: #10b981; /* UT Emerald */
+            --primary-hover: #059669;
+            --bg-gradient: linear-gradient(135deg, #022c22 0%, #064e3b 100%); /* Dark UT Green */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
@@ -719,7 +719,12 @@
     <!-- Barra de Navegación (Franja) -->
     <header class="navbar-strip">
         <a href="#" class="navbar-logo">
-            <span>🏫</span> Control Escolar
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #eab308; margin-right: 4px;">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                <path d="M12 14v6"></path>
+            </svg>
+            <span>UT</span> del Mayab
         </a>
 
         <div style="display: flex; align-items: center; gap: 1rem;">
@@ -761,8 +766,8 @@
             
             <!-- Panel 1: Bienvenido (Inicio) -->
             <div id="panel-dashboard" class="content-panel">
-                <h1>¡Hola, {{ Auth::user()->name }}!</h1>
-                <p class="subtitle">Has iniciado sesión correctamente. Este es tu panel de control privado.</p>
+                <h1>¡Bienvenido, {{ Auth::user()->name }}! 👋</h1>
+                <p class="subtitle">Sistema de Control Escolar de la Universidad Tecnológica del Mayab</p>
                 <div style="background: rgba(0, 0, 0, 0.2); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--glass-border);">
                     <p style="margin: 0; color: white;">Utiliza el menú de la esquina superior derecha para navegar por las diferentes secciones del sistema.</p>
                 </div>
