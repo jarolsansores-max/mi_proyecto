@@ -59,7 +59,7 @@ class AlumnoController extends Controller
             $relations[] = 'aspirante';
         }
 
-        $alumnos = Alumno::with($relations)->orderBy('id', 'desc')->get();
+        $alumnos = Alumno::with($relations)->orderBy('id_alumnos', 'desc')->get();
 
         return response()->json([
             'alumnos' => $alumnos,

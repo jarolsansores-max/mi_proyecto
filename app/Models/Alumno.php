@@ -10,7 +10,7 @@ class Alumno extends Model
     use HasFactory;
 
     protected $table = 'alumnos';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_alumnos';
     public $incrementing = true;
     protected $keyType = 'int';
 
