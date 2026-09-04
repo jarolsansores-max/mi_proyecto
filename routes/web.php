@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/test-db', TestConnectionController::class);
