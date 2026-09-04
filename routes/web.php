@@ -1,0 +1,60 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestConnectionController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\AspiranteController;
+use App\Http\Controllers\AlumnoController;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/test-db', TestConnectionController::class);
+
+Route::get('/check-db', function () {
+    try {
+        DB::connection()->getPdo();
+        return "¡Éxito! Conexión establecida con la base de datos: " . DB::connection()->getDatabaseName();
+    } catch (\Exception $e) {
+        return "Error: No se pudo conectar a la base de datos. " . $e->getMessage();
+    }
+});
+
+// Authentication Routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Protected Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard', [
+            'users' => User::orderBy('created_at', 'desc')->get(),
+        ]);
+    })->name('dashboard');
+
+    Route::get('/users/list', [UserController::class, 'index'])->name('users.index');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('/carreras/list', [CarreraController::class, 'index'])->name('carreras.index');
+    Route::post('/carreras', [CarreraController::class, 'store'])->name('carreras.store');
+    Route::put('/carreras/{carrera}', [CarreraController::class, 'update'])->name('carreras.update');
+    Route::delete('/carreras/{carrera}', [CarreraController::class, 'destroy'])->name('carreras.destroy');
+
+    Route::get('/aspirantes/list', [AspiranteController::class, 'index'])->name('aspirantes.index');
+    Route::post('/aspirantes', [AspiranteController::class, 'store'])->name('aspirantes.store');
+    Route::put('/aspirantes/{aspirante}', [AspiranteController::class, 'update'])->name('aspirantes.update');
+    Route::delete('/aspirantes/{aspirante}', [AspiranteController::class, 'destroy'])->name('aspirantes.destroy');
+
+    Route::get('/alumnos/list', [AlumnoController::class, 'index'])->name('alumnos.index');
+    Route::post('/alumnos', [AlumnoController::class, 'store'])->name('alumnos.store');
+    Route::put('/alumnos/{alumno}', [AlumnoController::class, 'update'])->name('alumnos.update');
+    Route::delete('/alumnos/{alumno}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
+});
