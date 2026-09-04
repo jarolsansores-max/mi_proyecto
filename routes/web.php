@@ -25,40 +25,6 @@ Route::get('/check-db', function () {
     }
 });
 
-// TEMPORARY DEBUG ROUTE - DELETE AFTER FIXING
-Route::get('/debug-login', function () {
-    $user = User::where('email', 'test@example.com')->first();
-
-    if (!$user) {
-        // User doesn't exist - create it right now
-        $newUser = User::create([
-            'name' => 'Admin',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'email_verified_at' => now(),
-        ]);
-        return response()->json([
-            'status' => 'USER CREATED NOW',
-            'id' => $newUser->id,
-            'email' => $newUser->email,
-            'password_check' => \Illuminate\Support\Facades\Hash::check('password', $newUser->password),
-        ]);
-    }
-
-    $hashCheck = \Illuminate\Support\Facades\Hash::check('password', $user->password);
-
-    return response()->json([
-        'status' => 'USER EXISTS',
-        'id' => $user->id,
-        'email' => $user->email,
-        'password_starts_with' => substr($user->password, 0, 20) . '...',
-        'password_length' => strlen($user->password),
-        'hash_check_password' => $hashCheck,
-        'session_driver' => config('session.driver'),
-        'db_connection' => config('database.default'),
-        'app_env' => config('app.env'),
-    ]);
-});
 
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

@@ -1192,7 +1192,10 @@
                 </div>
                 <div class="form-group">
                     <label for="aspiranteDocumentosCompletos">Documentos Completos</label>
-                    <input type="number" id="aspiranteDocumentosCompletos" placeholder="0 o 1" min="0" max="1" required>
+                    <select id="aspiranteDocumentosCompletos" required>
+                        <option value="0">No</option>
+                        <option value="1">Sí</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="aspiranteObservaciones">Observaciones</label>
@@ -1737,7 +1740,7 @@
                 aspiranteCarrera.value = aspirante.id_carrera || '';
                 aspirantePromedio.value = aspirante.promedio_bachillerato ?? '';
                 aspiranteEstatus.value = aspirante.estatus || 'Pendiente';
-                aspiranteDocumentosCompletos.value = aspirante.documentos_completos ?? 0;
+                aspiranteDocumentosCompletos.value = aspirante.documentos_completos ? '1' : '0';
                 aspiranteObservaciones.value = aspirante.observaciones || '';
             } else {
                 aspiranteModalTitle.textContent = 'Agregar Nuevo Aspirante';
